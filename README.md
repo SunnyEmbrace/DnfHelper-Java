@@ -12,9 +12,6 @@
 6. *** 管理员方式运行 java -jar target/Dnfhelper-Java-1.0.0.jar ***
 7. 功能热键 F1.全屏打怪 End.自动刷图
 ```
-
-### 点击链接加入群聊【毒奶粉研究院】：https://qm.qq.com/q/hedws1v2cS
-
 ### 点击链接加入群聊【毒奶粉研究院】：https://t.me/+D3V4dfGWE_JjYzU1
 
 ## Stargazers over time

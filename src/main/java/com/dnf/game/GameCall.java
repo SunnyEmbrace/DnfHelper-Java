@@ -118,12 +118,12 @@ public class GameCall extends Base {
      * 技能call
      *
      * @param address 触发地址
-     * @param code    技能代码
-     * @param harm    技能伤害
-     * @param x       x坐标
-     * @param y       y坐标
-     * @param z       z坐标
-     * @param size    技能大小
+     * @param code 技能代码
+     * @param harm 技能伤害
+     * @param x x坐标
+     * @param y y坐标
+     * @param z z坐标
+     * @param size 技能大小
      */
     public void skillCall(long address, int code, int harm, int x, int y, int z, float size) {
         // 空白地址
@@ -199,8 +199,8 @@ public class GameCall extends Base {
      *
      * @param maxMap int
      * @param mixMap int
-     * @param x      int
-     * @param y      int
+     * @param x int
+     * @param y int
      */
     public void moveCall(int maxMap, int mixMap, int x, int y) {
         long rolePtr = memory.readLong(Address.JSPtrAddr); // 角色指针
@@ -237,39 +237,41 @@ public class GameCall extends Base {
 
     // DriftCall 漂移Callx
     public void driftCall(long ptr, int x, int y, int z, int speed) {
-        int[] shellCode = new int[]{72, 129, 236, 0, 8, 0, 0};
-        shellCode = Bytes.addBytes(shellCode, new int[]{185, 240, 0, 0, 0});
-        shellCode = Bytes.addBytes(shellCode, new int[]{72, 184}, Bytes.intToBytes(Address.SqNcCallAddr));
-        shellCode = Bytes.addBytes(shellCode, new int[]{255, 208});
-        shellCode = Bytes.addBytes(shellCode, new int[]{72, 139, 240, 72, 139, 200});
-        shellCode = Bytes.addBytes(shellCode, new int[]{72, 184}, Bytes.intToBytes(Address.PyCall1Addr));
-        shellCode = Bytes.addBytes(shellCode, new int[]{255, 208});
-        shellCode = Bytes.addBytes(shellCode, new int[]{185}, Bytes.intToBytes(x));
-        shellCode = Bytes.addBytes(shellCode, new int[]{137, 8});
-        shellCode = Bytes.addBytes(shellCode, new int[]{185}, Bytes.intToBytes(y));
-        shellCode = Bytes.addBytes(shellCode, new int[]{137, 72, 4});
-        shellCode = Bytes.addBytes(shellCode, new int[]{185}, Bytes.intToBytes(z));
-        shellCode = Bytes.addBytes(shellCode, new int[]{137, 72, 8, 72, 141, 72, 24});
-        shellCode = Bytes.addBytes(shellCode, new int[]{186}, Bytes.intToBytes(speed));
-        shellCode = Bytes.addBytes(shellCode, new int[]{72, 184}, Bytes.intToBytes(Address.PyCall2Addr));
-        shellCode = Bytes.addBytes(shellCode, new int[]{255, 208});
-        shellCode = Bytes.addBytes(shellCode, new int[]{51, 219, 137, 95, 48, 199, 135, 224, 0, 0, 0, 2, 0, 0, 0, 72, 141, 69, 136, 72, 137, 68, 36, 96, 72, 137, 93, 136, 72, 137, 93, 144, 51, 210, 72, 141, 77, 136});
-        shellCode = Bytes.addBytes(shellCode, new int[]{72, 184}, Bytes.intToBytes(Address.XrNcCallAddr));
-        shellCode = Bytes.addBytes(shellCode, new int[]{72, 139, 206, 72, 139, 1});
-        shellCode = Bytes.addBytes(shellCode, new int[]{72, 139, 6, 137, 92, 36, 64, 72, 137, 92, 36, 56, 72, 137, 92, 36, 48, 137, 92, 36, 40, 72, 141, 77, 136, 72, 137, 76, 36, 32, 69, 51, 201});
-        shellCode = Bytes.addBytes(shellCode, new int[]{72, 186}, Bytes.intToBytes(ptr));
-        shellCode = Bytes.addBytes(shellCode, new int[]{73, 184}, Bytes.intToBytes(ptr));
-        shellCode = Bytes.addBytes(shellCode, new int[]{72, 139, 206});
-        shellCode = Bytes.addBytes(shellCode, new int[]{255, 144}, Bytes.intToBytes(312));
-        shellCode = Bytes.addBytes(shellCode, new int[]{72, 129, 196, 0, 8, 0, 0});
-        compileCall(shellCode);
+        coordinateMove(x,y);
+        return;
+//        int[] shellCode = new int[]{72, 129, 236, 0, 8, 0, 0};
+//        shellCode = Bytes.addBytes(shellCode, new int[]{185, 240, 0, 0, 0});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{72, 184}, Bytes.intToBytes(Address.SqNcCallAddr));
+//        shellCode = Bytes.addBytes(shellCode, new int[]{255, 208});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{72, 139, 240, 72, 139, 200});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{72, 184}, Bytes.intToBytes(Address.PyCall1Addr));
+//        shellCode = Bytes.addBytes(shellCode, new int[]{255, 208});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{185}, Bytes.intToBytes(x));
+//        shellCode = Bytes.addBytes(shellCode, new int[]{137, 8});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{185}, Bytes.intToBytes(y));
+//        shellCode = Bytes.addBytes(shellCode, new int[]{137, 72, 4});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{185}, Bytes.intToBytes(z));
+//        shellCode = Bytes.addBytes(shellCode, new int[]{137, 72, 8, 72, 141, 72, 24});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{186}, Bytes.intToBytes(speed));
+//        shellCode = Bytes.addBytes(shellCode, new int[]{72, 184}, Bytes.intToBytes(Address.PyCall2Addr));
+//        shellCode = Bytes.addBytes(shellCode, new int[]{255, 208});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{51, 219, 137, 95, 48, 199, 135, 224, 0, 0, 0, 2, 0, 0, 0, 72, 141, 69, 136, 72, 137, 68, 36, 96, 72, 137, 93, 136, 72, 137, 93, 144, 51, 210, 72, 141, 77, 136});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{72, 184}, Bytes.intToBytes(Address.XrNcCallAddr));
+//        shellCode = Bytes.addBytes(shellCode, new int[]{72, 139, 206, 72, 139, 1});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{72, 139, 6, 137, 92, 36, 64, 72, 137, 92, 36, 56, 72, 137, 92, 36, 48, 137, 92, 36, 40, 72, 141, 77, 136, 72, 137, 76, 36, 32, 69, 51, 201});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{72, 186}, Bytes.intToBytes(ptr));
+//        shellCode = Bytes.addBytes(shellCode, new int[]{73, 184}, Bytes.intToBytes(ptr));
+//        shellCode = Bytes.addBytes(shellCode, new int[]{72, 139, 206});
+//        shellCode = Bytes.addBytes(shellCode, new int[]{255, 144}, Bytes.intToBytes(312));
+//        shellCode = Bytes.addBytes(shellCode, new int[]{72, 129, 196, 0, 8, 0, 0});
+//        compileCall(shellCode);
     }
 
 
     /**
      * 进图Call
      *
-     * @param mapId    int 地图Id
+     * @param mapId int 地图Id
      * @param mapLevel int 地图等级
      */
     public void goMapCall(int mapId, int mapLevel) {
@@ -371,5 +373,24 @@ public class GameCall extends Base {
         data = Bytes.addBytes(data, call(Address.WcCallAddr));
         data = Bytes.addBytes(data, addRsp(512));
         compileCall(data);
+    }
+
+    /**
+     * 坐标移动
+     * @param x 坐标
+     * @param y y坐标
+     */
+    public void coordinateMove(int x, int y) {
+        // .常量 人物坐标_1, "328", , ,  0x148 创新中心获取
+        // .常量 人物坐标_2, "69", , ,  0x45 创新中心获取
+        long personPtr = personPtr();
+        // 读取坐标指针
+        long coordinatePtr = memory.readLong(memory.readLong(personPtr + 0x148L) + 8);
+        // 计算坐标偏移量
+        long offset = coordinatePtr + 0x45L;
+
+        // 写入坐标值
+        memory.writeFloat(offset, (float) x);
+        memory.writeFloat(offset + 4, (float) y);
     }
 }

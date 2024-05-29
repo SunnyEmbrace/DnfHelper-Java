@@ -1,7 +1,7 @@
 ## 如何启动
 
 ```markdown
-1. 下载并安装jdk11
+1. 下载并安装jdk17
    https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_windows-x64_bin.zip)
 2. 下载maven https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.zip
 3. 配置好jdk环境变量和maven环境变量
